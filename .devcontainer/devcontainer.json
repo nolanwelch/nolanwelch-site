@@ -1,0 +1,27 @@
+{
+    "name": "Astro DevContainer",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "astro-build.astro-vscode"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+    "postCreateCommand": "npm install",
+    "forwardPorts": [
+        4321
+    ],
+    "portsAttributes": {
+        "4321": {
+            "label": "Astro Dev Server",
+            "onAutoForward": "notify"
+        }
+    },
+    "remoteUser": "node"
+}

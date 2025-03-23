@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Career &ndash; Nolan Welch</title>
+    <meta
+      name="description"
+      content="A summary of Nolan Welch's professional experience across research labs, software development, and leadership roles in student-led organizations."
+    />
+  </Fragment>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl font-bold tracking-tight mb-6">Career</h1>
+
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-10">
+      I&rsquo;ve worked across research, infrastructure, and nonprofit education
+      &mdash; with a focus on thoughtful systems, clear tooling, and community
+      impact.
+    </p>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">Research Software Engineer</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-1">
+        <a
+          href="https://ndclab.com"
+          class="text-blue-600 hover:text-blue-800 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Neural Dynamics of Control Lab</a
+        >, Florida International University
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        I build infrastructure for dataset validation, QA pipelines, and
+        long-term reproducibility across cognitive neuroscience studies. My work
+        includes re-architecting the <a
+          href="/projects/hallmonitor"
+          class="text-blue-600 hover:text-blue-800 underline">hallMonitor 2.0</a
+        > system and contributing to reproducible research practices.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">COO & Systems Lead</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-1">
+        Chapel Thrill Escapes (Student-Run Nonprofit)
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        As Chief Operating Officer, I led day-to-day operations and designed <a
+          href="/projects/eric"
+          class="text-blue-600 hover:text-blue-800 underline">ERIC</a
+        >, a custom staff booking and event coordination system. I focused on
+        sustainable processes and thoughtful internal tooling.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">Founder & Technical Lead</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-1">
+        Swimmingly (In Progress)
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        A debugging-centered learning platform built around real-world software
+        reasoning, designed to make mentorship and clarity central to code
+        education. Git-based progression model, narrative-driven feedback, and
+        persona-based collaboration. Learn more on the <a
+          href="/projects/swimmingly"
+          class="text-blue-600 hover:text-blue-800 underline"
+          >Swimmingly project page</a
+        >.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Developer</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-1">Carolina Radio</p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        A collaborative radio-style listening experience designed to turn
+        Spotify sessions into a shared stream with friends. Songs are selected
+        dynamically based on request timing, popularity, and randomness. Built
+        with React, FastAPI, and MongoDB. See more on the <a
+          href="/projects/carolina-radio"
+          class="text-blue-600 hover:text-blue-800 underline"
+          >Carolina Radio project page</a
+        >.
+      </p>
+    </section>
+
+    <a href="/" class="text-blue-600 hover:text-blue-800 underline">
+      &larr; Back home
+    </a>
+  </div>
+</BaseLayout>

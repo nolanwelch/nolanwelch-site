@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>hallMonitor 2.0 &ndash; Project by Nolan Welch</title>
+    <meta
+      name="description"
+      content="hallMonitor 2.0 is a robust data validation and QA system for research infrastructure, designed and rewritten by Nolan Welch for clarity, transparency, and extensibility."
+    />
+  </Fragment>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl font-bold tracking-tight mb-2">hallMonitor 2.0</h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+      <a
+        href="https://github.com/NDCLab/lab-devOps/tree/data-monitoring-v2.0/scripts/monitor/hallMonitor2"
+        class="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-800 underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>View on GitHub</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M10 3v2h6.59L4 17.59 5.41 19 18 6.41V13h2V3z"></path>
+        </svg>
+      </a>
+    </p>
+
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      hallMonitor 2.0 is a data validation and quality assurance system
+      developed for the Neural Dynamics of Control Lab. It ensures that datasets
+      across multiple studies remain consistent with tracker files, metadata
+      standards, and protocol-specific rules.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Philosophy</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      In research environments, silent errors accumulate quietly but cost
+      dearly. This project is about making invisible problems visible early
+      &mdash; and doing so in a way that respects modularity, transparency, and
+      auditability.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Challenges</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      Rewriting the system from Bash to Python meant rethinking abstractions,
+      error handling, logging, and validation structure. It had to scale to
+      multiple data types and still provide clear, actionable feedback for
+      research assistants and analysts.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Reflections</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      hallMonitor taught me how to build systems that last &mdash; and how to
+      balance flexibility with reliability. It also deepened my commitment to
+      writing code that explains itself, even as it scales.
+    </p>
+
+    <a href="/projects" class="text-blue-600 hover:text-blue-800 underline">
+      &larr; Back to projects</a
+    >
+  </div>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>ERIC &ndash; Project by Nolan Welch</title>
+    <meta
+      name="description"
+      content="ERIC is a custom booking and staff coordination system developed by Nolan Welch for Chapel Thrill Escapes, streamlining operations in a student-run nonprofit setting."
+    />
+  </Fragment>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl font-bold tracking-tight mb-2">
+      ERIC (Escape Room Integrated Coordinator)
+    </h1>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+      <a
+        href="https://github.com/nolanwelch/eric-cte"
+        class="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-800 underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>View on GitHub</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M10 3v2h6.59L4 17.59 5.41 19 18 6.41V13h2V3z"></path>
+        </svg>
+      </a>
+    </p>
+
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      ERIC is a custom-built booking and operations platform developed for
+      <a
+        href="https://chapelthrillescapes.com"
+        class="text-blue-600 hover:text-blue-800 underline"
+        target="_blank"
+        rel="noopener noreferrer">Chapel Thrill Escapes</a
+      >, a student-run nonprofit escape room. It manages event scheduling, staff
+      coordination, volunteer onboarding, and performance tracking. ERIC also
+      interfaces with the Bookeo API to check for new, unchecked bookings and
+      identifies participants registered as "on-campus students." If a
+      participant does not provide a valid on-campus student ID, their booking
+      is automatically cancelled. The system runs on a loop via an Amazon EC2
+      instance to ensure consistent enforcement.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Philosophy</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      Student organizations deserve tooling that&rsquo;s as thoughtful as any
+      production system. ERIC was built to make behind-the-scenes operations
+      intuitive, reliable, and maintainable by future student teams.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Challenges</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      Working within a nonprofit context meant designing for change, simplicity,
+      and low overhead. ERIC needed to feel friendly to non-engineers while
+      still solving real logistical pain points.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Reflections</h2>
+    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+      This project solidified my interest in systems architecture as community
+      infrastructure. It&rsquo;s where technical clarity meets operational
+      compassion.
+    </p>
+
+    <a href="/projects" class="text-blue-600 hover:text-blue-800 underline">
+      &larr; Back to projects</a
+    >
+  </div>
+</BaseLayout>

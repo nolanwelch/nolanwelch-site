@@ -1,0 +1,22 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <slot name="head" />
+  </head>
+  <body
+    class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 font-sans"
+  >
+    <Navbar />
+
+    <main class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

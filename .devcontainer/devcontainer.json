@@ -1,32 +1,31 @@
 {
-    "name": "Astro DevContainer",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "astro-build.astro-vscode"
-            ],
-            "settings": {
-                "dev.containers.copyGitConfig": true,
-                "terminal.integrated.defaultProfile.linux": "bash"
-            }
-        }
-    },
-    "postCreateCommand": "npm install",
-    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global credential.helper '/mnt/host/wsl/docker-credential-wsl-helper'",
-    "forwardPorts": [
-        4321
-    ],
-    "mounts": [
-        "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
-    ],
-    "portsAttributes": {
-        "4321": {
-            "label": "Astro Dev Server",
-            "onAutoForward": "notify"
-        }
-    },
-    "remoteUser": "node"
+  "name": "Astro DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["astro-build.astro-vscode"],
+      "settings": {
+        "dev.containers.copyGitConfig": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "astro-build.astro-vscode",
+        "eslint.validate": ["javascript", "typescript", "astro"]
+      }
+    }
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global credential.helper '/mnt/host/wsl/docker-credential-wsl-helper'",
+  "forwardPorts": [4321],
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
+  ],
+  "portsAttributes": {
+    "4321": {
+      "label": "Astro Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "node"
 }

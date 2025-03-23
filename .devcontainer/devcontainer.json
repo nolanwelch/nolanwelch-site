@@ -9,13 +9,18 @@
                 "astro-build.astro-vscode"
             ],
             "settings": {
+                "dev.containers.copyGitConfig": true,
                 "terminal.integrated.defaultProfile.linux": "bash"
             }
         }
     },
     "postCreateCommand": "npm install",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global credential.helper '/mnt/host/wsl/docker-credential-wsl-helper'",
     "forwardPorts": [
         4321
+    ],
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
     ],
     "portsAttributes": {
         "4321": {

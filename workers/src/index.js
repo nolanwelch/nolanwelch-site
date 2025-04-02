@@ -13,6 +13,7 @@ export default {
 
     // Remove ref param, redirect to homepage
     url.searchParams.delete("ref");
+    url.searchParams.delete("source");
     url.hostname = "nolanwelch.com";
     return Response.redirect(url.toString(), 302);
   },

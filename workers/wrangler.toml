@@ -3,6 +3,10 @@ main = "src/index.js"
 compatibility_date = "2024-04-01"
 account_id = "8bae875f3ce3f27b8a87b1e8f65edebe"
 
+routes = [
+    { pattern = "track.nolanwelch.com/*", zone_id = "a71840468242986d9368b16be0a440c0" },
+]
+
 [observability.logs]
 enabled = true
 

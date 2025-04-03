@@ -2,7 +2,6 @@
 # - ACCOUNT_ID
 # - DOMAIN
 # - ZONE_ID
-# - KV_DEV_ID
 # - KV_PROD_ID
 
 name = "referral-tracker"
@@ -12,11 +11,4 @@ account_id = "ACCOUNT_ID"
 
 observability.logs.enabled = true
 
-# Default (dev) settings
-kv_namespaces = [{ binding = "REFERRAL_KV", id = "KV_DEV_ID" }]
-
-# -----------------------------
-# Production Settings
-# -----------------------------
-[env.production]
 kv_namespaces = [{ binding = "REFERRAL_KV", id = "KV_PROD_ID" }]

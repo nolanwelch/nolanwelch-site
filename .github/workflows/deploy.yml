@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
       TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       TF_VAR_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
@@ -40,34 +39,3 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: terraform
-
-      - name: Extract KV Namespace IDs
-        id: kv
-        run: |
-          echo "kv_prod=$(terraform output -raw referral_kv_prod_id)" >> $GITHUB_OUTPUT
-        working-directory: terraform
-
-      - name: Patch wrangler.toml
-        run: |
-          cp workers/wrangler.template.toml workers/wrangler.toml
-          sed -i "s/DOMAIN/${{ vars.DOMAIN }}/g" workers/wrangler.toml
-          sed -i "s/KV_PROD_ID/${{ steps.kv.outputs.kv_prod }}/" workers/wrangler.toml
-          sed -i "s/ACCOUNT_ID/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/g" workers/wrangler.toml
-          sed -i "s/ZONE_ID/${{ secrets.CLOUDFLARE_ZONE_ID }}/g" workers/wrangler.toml
-
-      - name: Upload patched wrangler.toml
-        uses: actions/upload-artifact@v4
-        with:
-          name: wrangler.toml
-          path: workers/wrangler.toml
-
-      - name: Install wrangler
-        run: npm install -g wrangler
-
-      - name: Verify wrangler auth
-        run: wrangler whoami
-
-      - name: Deploy Worker
-        run: |
-          cd workers
-          wrangler deploy

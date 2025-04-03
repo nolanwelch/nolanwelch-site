@@ -1,0 +1,27 @@
+# These values are dynamically injected in GitHub Actions:
+# - ACCOUNT_ID
+# - DOMAIN
+# - ZONE_ID
+# - KV_DEV_ID
+# - KV_PROD_ID
+
+name = "referral-tracker"
+main = "src/index.js"
+compatibility_date = "2024-04-01"
+account_id = "ACCOUNT_ID"
+
+observability.logs.enabled = true
+
+# Default (dev) settings
+routes = [{ pattern = "track-dev.DOMAIN/*", zone_id = "ZONE_ID" }]
+kv_namespaces = [{ binding = "REFERRAL_KV", id = "KV_DEV_ID" }]
+
+
+# -----------------------------
+# Production Settings
+# -----------------------------
+[env.production]
+
+routes = [{ pattern = "track.DOMAIN/*", zone_id = "ZONE_ID" }]
+
+kv_namespaces = [{ binding = "REFERRAL_KV", id = "KV_PROD_ID" }]

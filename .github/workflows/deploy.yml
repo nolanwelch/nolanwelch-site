@@ -1,0 +1,69 @@
+name: Terraform Infra
+
+on:
+  push:
+    paths:
+      - "terraform/**"
+      - "workers/**"
+      - ".github/workflows/deploy.yml"
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      TF_VAR_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+      TF_VAR_account_id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      TF_VAR_domain: ${{ secrets.DOMAIN }}
+      TF_VAR_pages_domain: ${{ secrets.PAGES_DOMAIN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: terraform
+
+      - name: Extract KV Namespace IDs
+        id: kv
+        run: |
+          echo "kv_dev=$(terraform output -raw referral_kv_dev_id)" >> $GITHUB_OUTPUT
+          echo "kv_prod=$(terraform output -raw referral_kv_prod_id)" >> $GITHUB_OUTPUT
+        working-directory: terraform
+
+      - name: Patch wrangler.toml
+        run: |
+          cp workers/wrangler.template.toml workers/wrangler.toml
+          sed -i "s/DOMAIN/${{ secrets.DOMAIN }}/g" workers/wrangler.toml
+          sed -i "s/KV_DEV_ID/${{ steps.kv.outputs.kv_dev }}/" workers/wrangler.toml
+          sed -i "s/KV_PROD_ID/${{ steps.kv.outputs.kv_prod }}/" workers/wrangler.toml
+          sed -i "s/ACCOUNT_ID/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/g" workers/wrangler.toml
+          sed -i "s/ZONE_ID/${{ secrets.CLOUDFLARE_ZONE_ID }}/g" workers/wrangler.toml
+
+      - name: Upload patched wrangler.toml
+        uses: actions/upload-artifact@v3
+        with:
+          name: wrangler.toml
+          path: workers/wrangler.toml
+
+      - name: Install wrangler
+        run: npm install -g wrangler
+    
+      - name: Verify wrangler auth
+        run: wrangler whoami
+
+      - name: Deploy Worker
+        run: |
+          cd workers
+          wrangler deploy --env production

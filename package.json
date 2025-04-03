@@ -11,13 +11,13 @@
     "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
     "format": "prettier --write .",
     "prepare": "husky"
-},
-"lint-staged": {
+  },
+  "lint-staged": {
     "*.{js,ts,astro}": [
-    "eslint --fix",
-    "prettier --write"
+      "eslint --fix",
+      "prettier --write"
     ]
-},
+  },
   "dependencies": {
     "astro": "^5.5.4"
   },

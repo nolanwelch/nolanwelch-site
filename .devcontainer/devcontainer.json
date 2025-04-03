@@ -8,7 +8,8 @@
       "extensions": [
         "astro-build.astro-vscode",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "hashicorp.terraform"
       ],
       "settings": {
         "dev.containers.copyGitConfig": true,

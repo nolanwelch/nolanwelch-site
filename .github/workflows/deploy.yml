@@ -41,10 +41,8 @@ jobs:
       - name: Extract KV Namespace IDs
         id: kv
         run: |
-          kv_dev=$(terraform output -raw referral_kv_dev_id)
-          kv_prod=$(terraform output -raw referral_kv_prod_id)
-          echo "kv_dev=$kv_dev" >> "$GITHUB_OUTPUT"
-          echo "kv_prod=$kv_prod" >> "$GITHUB_OUTPUT"
+          echo "kv_dev=$(terraform output -raw referral_kv_dev_id)" >> $GITHUB_OUTPUT
+          echo "kv_prod=$(terraform output -raw referral_kv_prod_id)" >> $GITHUB_OUTPUT
         working-directory: terraform
 
       - name: Patch wrangler.toml

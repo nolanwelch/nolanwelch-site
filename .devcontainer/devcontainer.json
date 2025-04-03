@@ -5,12 +5,30 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["astro-build.astro-vscode"],
+    "extensions": [
+        "astro-build.astro-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ],
       "settings": {
         "dev.containers.copyGitConfig": true,
         "terminal.integrated.defaultProfile.linux": "bash",
+        // Set up default formatting
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "astro-build.astro-vscode",
+            // Astro -> astro-vscode
+            "[astro]": {
+                "editor.defaultFormatter": "astro-build.astro-vscode"
+            },
+            // JavaScript + TypeScript + JSON -> prettier-vscode
+            "[javascript]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[typescript]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[json]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
         "eslint.validate": ["javascript", "typescript", "astro"]
       }
     }

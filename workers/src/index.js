@@ -3,7 +3,7 @@ export default {
     const url = new URL(request.url);
     const ref = url.searchParams.get("ref");
 
-    if (url.pathname == "/robots.txt") {
+    if (url.pathname === "/robots.txt") {
       return new Response("User-agent: *\nDisallow: /\n", {
         headers: {
           "Content-Type": "text/plain",

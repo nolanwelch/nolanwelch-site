@@ -51,7 +51,7 @@ jobs:
       - name: Patch wrangler.toml
         run: |
           cp workers/wrangler.template.toml workers/wrangler.toml
-          sed -i "s/DOMAIN/${{ secrets.DOMAIN }}/g" workers/wrangler.toml
+          sed -i "s/DOMAIN/${{ vars.DOMAIN }}/g" workers/wrangler.toml
           sed -i "s/KV_DEV_ID/${{ steps.kv.outputs.kv_dev }}/" workers/wrangler.toml
           sed -i "s/KV_PROD_ID/${{ steps.kv.outputs.kv_prod }}/" workers/wrangler.toml
           sed -i "s/ACCOUNT_ID/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/g" workers/wrangler.toml

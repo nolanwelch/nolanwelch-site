@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "nolanwelch"
+    workspaces {
+      name = "github-actions"
+    }
+  }
+
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"

@@ -1,7 +1,8 @@
 resource "cloudflare_workers_script" "referral_tracker" {
   account_id = var.account_id
-  name       = "referral-tracker-production"
+  name       = "referral-tracker"
   content    = file("workers/index.js")
+  module     = true
 }
 
 resource "cloudflare_workers_route" "track_subdomain" {

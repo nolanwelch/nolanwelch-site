@@ -9,6 +9,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch: # allow manual running of this Action
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -59,7 +61,7 @@ jobs:
 
       - name: Install wrangler
         run: npm install -g wrangler
-    
+
       - name: Verify wrangler auth
         run: wrangler whoami
 

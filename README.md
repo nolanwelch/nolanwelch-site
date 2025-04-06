@@ -1,48 +1,65 @@
-# Astro Starter Kit: Basics
+# Nolan Welch's Personal Site
 
-```sh
-npm create astro@latest -- --template basics
-```
+This is my personal website built with [Astro](https://astro.build), a modern static site builder. The site features a clean, modern design and is deployed using Cloudflare Workers.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Tech Stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Framework**: Astro
+- **Styling**: Tailwind CSS
+- **Deployment**: Cloudflare Workers
+- **Infrastructure**: Terraform
+- **Code Quality**: ESLint, Prettier, Husky
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 📦 Development
 
-## 🚀 Project Structure
+### Prerequisites
 
-Inside of your Astro project, you'll see the following folders and files:
+- Node.js (latest LTS version recommended)
+- npm or yarn
+- Cloudflare account (for deployment)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Local Development
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1. Install dependencies:
 
-## 🧞 Commands
+   ```bash
+   npm install
+   ```
 
-All commands are run from the root of the project, from a terminal:
+2. Start the development server:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+   ```bash
+   npm run dev
+   ```
 
-## 👀 Want to learn more?
+3. The site will be available at `http://localhost:4321`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build production site
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 🚀 Deployment
+
+The site is deployed using Cloudflare Workers, with infrastructure managed by Terraform. The deployment process is automated through GitHub Actions.
+
+### Infrastructure
+
+The Terraform configuration in the `terraform/` directory manages:
+
+- Cloudflare Workers
+- DNS configuration
+- KV storage
+
+### Deployment Process
+
+1. Push changes to the main branch
+2. GitHub Actions automatically builds and deploys the site
+3. The site is served through Cloudflare's global network
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

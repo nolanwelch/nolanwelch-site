@@ -1,5 +1,25 @@
 ---
 import Sparkle from "./Sparkle.astro";
+
+const navigation = {
+  main: [
+    { name: "Home", href: "/" },
+    {
+      name: "Projects",
+      href: "/projects",
+      children: [
+        { name: "Swimmingly", href: "/projects/swimmingly" },
+        { name: "hallMonitor 2.0", href: "/projects/hallmonitor" },
+        { name: "ERIC", href: "/projects/eric" },
+        { name: "Carolina Radio", href: "/projects/carolina-radio" },
+      ],
+    },
+    { name: "Academics", href: "/academics" },
+    { name: "Career", href: "/career" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact", isCta: true },
+  ],
+};
 ---
 
 <header
@@ -15,74 +35,205 @@ import Sparkle from "./Sparkle.astro";
       Nolan Welch
     </a>
 
+    <!-- Hamburger Menu Button (visible on mobile) -->
+    <button
+      id="menu-toggle"
+      class="lg:hidden flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+      aria-label="Toggle menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
     <!-- Navigation Links -->
-    <nav>
-      <div class="flex items-center space-x-4 text-sm sm:text-base relative">
-        <a
-          href="/"
-          class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-          >Home</a
-        >
+    <nav class="hidden lg:block">
+      <div class="flex items-center space-x-4 text-base">
+        {
+          navigation.main.map((item) => (
+            <>
+              {item.children ? (
+                <div class="relative group">
+                  <a
+                    href={item.href}
+                    class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+                  >
+                    {item.name}
+                  </a>
 
-        <!-- Projects Dropdown (Top-level link + hover menu) -->
-        <div class="relative group">
-          <a
-            href="/projects"
-            class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-          >
-            Projects
-          </a>
-
-          <div
-            class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200"
-          >
-            <a
-              href="/projects/swimmingly"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition"
-              >Swimmingly</a
-            >
-            <a
-              href="/projects/hallmonitor"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition"
-              >hallMonitor 2.0</a
-            >
-            <a
-              href="/projects/eric"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition"
-              >ERIC</a
-            >
-            <a
-              href="/projects/carolina-radio"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition"
-              >Carolina Radio</a
-            >
-          </div>
-        </div>
-
-        <a
-          href="/academics"
-          class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-          >Academics</a
-        >
-
-        <a
-          href="/career"
-          class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-          >Career</a
-        >
-
-        <a
-          href="/about"
-          class="px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
-          >About</a
-        >
-
-        <a
-          href="/contact"
-          class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all duration-200"
-          >Contact</a
-        >
+                  <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200">
+                    {item.children.map((child) => (
+                      <a
+                        href={child.href}
+                        class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition"
+                      >
+                        {child.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={item.href}
+                  class={`px-4 py-2 rounded-lg font-medium ${
+                    item.isCta
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"
+                  } transition-all duration-200`}
+                >
+                  {item.name}
+                </a>
+              )}
+            </>
+          ))
+        }
       </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 lg:hidden opacity-0 pointer-events-none transition-opacity duration-200 z-[100]"
+      aria-hidden="true"
+    >
+      <!-- Backdrop -->
+      <div
+        class="fixed inset-0 bg-black/30 backdrop-blur-xl transition-all duration-300"
+      >
+      </div>
+
+      <!-- Menu Panel -->
+      <div
+        id="mobile-menu-content"
+        class="fixed top-0 right-0 w-full max-w-sm h-screen bg-white/10 backdrop-blur-xl shadow-lg px-6 py-6 transform translate-x-full transition-transform duration-200 ease-out z-[101]"
+      >
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
+            Menu
+          </h2>
+          <button
+            id="close-menu"
+            class="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            aria-label="Close menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <nav class="space-y-2 h-[calc(100vh-5rem)] overflow-y-auto">
+          {
+            navigation.main.map((item) => (
+              <>
+                {item.children ? (
+                  <div class="space-y-1">
+                    <a
+                      href={item.href}
+                      class="block px-4 py-3 rounded-lg font-medium text-gray-900 dark:text-gray-100 hover:bg-white/20 hover:text-blue-600 dark:hover:text-blue-400 bg-white/10"
+                    >
+                      {item.name}
+                    </a>
+                    <div class="pl-4 space-y-1">
+                      {item.children.map((child) => (
+                        <a
+                          href={child.href}
+                          class="block px-4 py-2 rounded-lg text-sm text-gray-800 dark:text-gray-200 hover:bg-white/20 hover:text-blue-600 dark:hover:text-blue-400 bg-white/10"
+                        >
+                          {child.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    href={item.href}
+                    class={`block px-4 py-3 rounded-lg font-medium ${
+                      item.isCta
+                        ? "bg-blue-600 text-white hover:bg-blue-700 text-center"
+                        : "text-gray-900 dark:text-gray-100 hover:bg-white/20 hover:text-blue-600 dark:hover:text-blue-400 bg-white/10"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuContent = document.getElementById("mobile-menu-content");
+  const body = document.body;
+
+  const closeMenuBtn = document.getElementById("close-menu");
+
+  function openMenu() {
+    if (!mobileMenu || !mobileMenuContent) return;
+    mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+    mobileMenu.classList.add("opacity-100");
+    requestAnimationFrame(() => {
+      mobileMenuContent.classList.remove("translate-x-full");
+    });
+    body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    if (!mobileMenu || !mobileMenuContent) return;
+    mobileMenuContent.classList.add("translate-x-full");
+    mobileMenu.classList.remove("opacity-100");
+    mobileMenu.classList.add("opacity-0");
+    setTimeout(() => {
+      mobileMenu.classList.add("pointer-events-none");
+      body.style.overflow = "";
+    }, 200);
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", openMenu);
+  }
+
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener("click", closeMenu);
+  }
+
+  if (mobileMenu) {
+    mobileMenu.addEventListener("click", (e) => {
+      if (e.target === mobileMenu) {
+        closeMenu();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      !mobileMenu?.classList.contains("pointer-events-none")
+    ) {
+      closeMenu();
+    }
+  });
+</script>

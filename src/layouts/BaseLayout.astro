@@ -1,19 +1,76 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.css";
 ---
 
 <html lang="en">
   <head>
     <slot name="head" />
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
   </head>
   <body
     class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 font-sans"
+    style="will-change: background-color, color;"
   >
+    <script>
+      console.log("[BaseLayout] Script execution started");
+
+      // Track document state changes
+      document.addEventListener("readystatechange", () => {
+        console.log(
+          "[BaseLayout] Document readyState changed:",
+          document.readyState,
+        );
+      });
+
+      // Track window load
+      window.addEventListener("load", () => {
+        console.log("[BaseLayout] Window load event fired");
+        console.log("[BaseLayout] Performance timing:", {
+          domContentLoaded:
+            window.performance.timing.domContentLoadedEventEnd -
+            window.performance.timing.navigationStart,
+          load:
+            window.performance.timing.loadEventEnd -
+            window.performance.timing.navigationStart,
+        });
+      });
+
+      // Track component mounting
+      console.log("[BaseLayout] Component mounted");
+      console.log(
+        "[BaseLayout] Initial document readyState:",
+        document.readyState,
+      );
+      console.log(
+        "[BaseLayout] Window load event status:",
+        window.performance.timing.loadEventEnd > 0,
+      );
+
+      // Track component unmounting
+      document.addEventListener("astro:before-swap", () => {
+        console.log("[BaseLayout] Component unmounting");
+      });
+
+      // Error tracking
+      window.addEventListener("error", (event) => {
+        console.error("[BaseLayout] Global error:", event.error);
+      });
+    </script>
+
+    <!-- Persistent header -->
+    <Fragment slot="head">
+      <title>Nolan Welch</title>
+      <meta name="description" content="..." />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    </Fragment>
     <Navbar />
 
-    <main class="max-w-3xl mx-auto px-6 pt-12 pb-20">
+    <main class="max-w-3xl mx-auto px-6 pb-20">
       <slot />
     </main>
 

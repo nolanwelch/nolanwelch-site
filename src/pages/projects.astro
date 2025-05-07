@@ -4,89 +4,105 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout>
   <Fragment slot="head">
-    <title>Career &ndash; Nolan Welch</title>
+    <title>Projects &ndash; Nolan Welch</title>
     <meta
       name="description"
-      content="A summary of Nolan Welch's professional experience across research labs, software development, and leadership roles in student-led organizations."
+      content="Explore Nolan Welch's projects in software development, research infrastructure, and educational technology."
     />
   </Fragment>
 
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-4xl font-bold tracking-tight mb-6">Career</h1>
+    <h1 class="text-4xl font-bold tracking-tight mb-6">Projects</h1>
 
     <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-10">
-      I&rsquo;ve worked across research, infrastructure, and nonprofit education
-      &mdash; with a focus on thoughtful systems, clear tooling, and community
-      impact.
+      I build systems that help people make sense of things &mdash; from
+      research infrastructure to educational tools. Here are some of my recent
+      projects.
     </p>
 
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold mb-2">Research Software Engineer</h2>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">Swimmingly</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-1">
+        A debugging-centered learning platform (In Progress)
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+        A gamified learning platform that teaches real-world debugging and
+        software reasoning through fictional workplace challenges. Built on a
+        thoughtful system design with a Vite-powered React frontend and a
+        FastAPI backend, integrating a Git-based learning model to emphasize
+        clarity, mentorship, and progressive complexity.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
         <a
-          href="https://www.ndclab.com"
-          class="text-blue-600 hover:text-blue-800 underline"
+          href="/projects/swimmingly"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+        >
+          Learn more
+        </a>
+        <a
+          href="https://swimmingly.dev?utm_source=nolanwelch&utm_medium=portfolio&utm_campaign=projects"
           target="_blank"
           rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
         >
-          Neural Dynamics of Control Lab
-        </a>, Florida International University
-      </p>
-      <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-        I build infrastructure for dataset validation, QA pipelines, and
-        long-term reproducibility across cognitive neuroscience studies. My work
-        includes re-architecting <a
-          href="/projects/hallmonitor"
-          class="text-blue-600 hover:text-blue-800 underline">hallMonitor 2.0</a
-        > and contributing to reproducible research practices.
-      </p>
+          Visit site
+        </a>
+      </div>
     </section>
 
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold mb-2">COO & Systems Lead</h2>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">hallMonitor</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-1">
-        Chapel Thrill Escapes (Student-Run Nonprofit)
+        Research Data Validation System
       </p>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-        As Chief Operating Officer, I led day-to-day operations and designed
-        <a
-          href="/projects/eric"
-          class="text-blue-600 hover:text-blue-800 underline">ERIC</a
-        >, a custom staff booking and event coordination system. I focused on
-        sustainable processes and thoughtful internal tooling.
+        A validation and QA system for research datasets, ensuring consistency
+        between files, metadata, and study trackers. Rewritten from bash to
+        Python with structured logging and clear extensibility.
       </p>
+      <a
+        href="/projects/hallmonitor"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+      >
+        Learn more
+      </a>
     </section>
 
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold mb-2">Founder & Technical Lead</h2>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">ERIC</h2>
       <p class="text-gray-600 dark:text-gray-400 mb-1">
-        Swimmingly (In Progress)
+        Escape Room Management System
       </p>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-        A debugging-centered learning platform built around real-world software
-        reasoning, designed to make mentorship and clarity central to code
-        education. Git-based progression model, narrative-driven feedback, and
-        persona-based collaboration. Learn more at the <a
-          href="/projects/swimmingly"
-          class="text-blue-600 hover:text-blue-800 underline"
-          >Swimmingly project page</a
-        >.
+        A custom booking and event management system built for Chapel Thrill
+        Escapes - the first student-run escape room on a college campus. Focused
+        on sustainable processes and thoughtful internal tooling.
       </p>
+      <a
+        href="/projects/eric"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+      >
+        Learn more
+      </a>
     </section>
 
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Developer</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-1">Carolina Radio</p>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-2">Carolina Radio</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-1">
+        Collaborative Music Streaming Platform
+      </p>
       <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
         A collaborative radio-style listening experience designed to turn
         Spotify sessions into a shared stream with friends. Songs are selected
         dynamically based on request timing, popularity, and randomness. Built
-        with React, FastAPI, and MongoDB. See more on the <a
-          href="/projects/carolina-radio"
-          class="text-blue-600 hover:text-blue-800 underline"
-          >Carolina Radio project page</a
-        >.
+        with React, FastAPI, and MongoDB.
       </p>
+      <a
+        href="/projects/carolina-radio"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+      >
+        Learn more
+      </a>
     </section>
 
     <a href="/" class="text-blue-600 hover:text-blue-800 underline">

@@ -31,7 +31,7 @@ const navigation = {
       href="/"
       class="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
     >
-      <Sparkle size={50} />
+      <Sparkle size={50} data-no-animation />
       Nolan Welch
     </a>
 
@@ -184,56 +184,178 @@ const navigation = {
 </header>
 
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileMenuContent = document.getElementById("mobile-menu-content");
-  const body = document.body;
+  console.log("[Navbar] Script execution started");
 
-  const closeMenuBtn = document.getElementById("close-menu");
+  // Track document state changes
+  document.addEventListener("readystatechange", () => {
+    console.log("[Navbar] Document readyState changed:", document.readyState);
+  });
 
-  function openMenu() {
-    if (!mobileMenu || !mobileMenuContent) return;
-    mobileMenu.classList.remove("opacity-0", "pointer-events-none");
-    mobileMenu.classList.add("opacity-100");
-    requestAnimationFrame(() => {
-      mobileMenuContent.classList.remove("translate-x-full");
-    });
-    body.style.overflow = "hidden";
-  }
+  // Wait for DOM content to be loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("[Navbar] DOMContentLoaded event fired");
+    try {
+      // Use a single object to store all references
+      const refs = {
+        menuToggle: document.getElementById("menu-toggle"),
+        mobileMenu: document.getElementById("mobile-menu"),
+        mobileMenuContent: document.getElementById("mobile-menu-content"),
+        closeMenuBtn: document.getElementById("close-menu"),
+        body: document.body,
+      };
 
-  function closeMenu() {
-    if (!mobileMenu || !mobileMenuContent) return;
-    mobileMenuContent.classList.add("translate-x-full");
-    mobileMenu.classList.remove("opacity-100");
-    mobileMenu.classList.add("opacity-0");
-    setTimeout(() => {
-      mobileMenu.classList.add("pointer-events-none");
-      body.style.overflow = "";
-    }, 200);
-  }
+      console.log("[Navbar] Element references:", {
+        menuToggle: !!refs.menuToggle,
+        mobileMenu: !!refs.mobileMenu,
+        mobileMenuContent: !!refs.mobileMenuContent,
+        closeMenuBtn: !!refs.closeMenuBtn,
+      });
 
-  if (menuToggle) {
-    menuToggle.addEventListener("click", openMenu);
-  }
+      let animationFrameId: number | null = null;
+      let menuState = "closed";
 
-  if (closeMenuBtn) {
-    closeMenuBtn.addEventListener("click", closeMenu);
-  }
+      function openMenu() {
+        console.log("[Navbar] Opening menu, current state:", menuState);
+        if (!refs.mobileMenu || !refs.mobileMenuContent) {
+          console.error("[Navbar] Missing required elements for menu open");
+          return;
+        }
 
-  if (mobileMenu) {
-    mobileMenu.addEventListener("click", (e) => {
-      if (e.target === mobileMenu) {
+        menuState = "opening";
+        refs.mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+        refs.mobileMenu.classList.add("opacity-100");
+
+        // Store the animation frame ID for cleanup
+        animationFrameId = requestAnimationFrame(() => {
+          console.log("[Navbar] Animation frame executing for menu open");
+          refs.mobileMenuContent?.classList.remove("translate-x-full");
+          menuState = "open";
+        });
+
+        refs.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        console.log("[Navbar] Closing menu, current state:", menuState);
+        if (!refs.mobileMenu || !refs.mobileMenuContent) {
+          console.error("[Navbar] Missing required elements for menu close");
+          return;
+        }
+
+        menuState = "closing";
+        refs.mobileMenuContent.classList.add("translate-x-full");
+        refs.mobileMenu.classList.remove("opacity-100");
+        refs.mobileMenu.classList.add("opacity-0");
+
+        // Clear any pending animation frame
+        if (animationFrameId) {
+          console.log("[Navbar] Cancelling animation frame");
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+
+        setTimeout(() => {
+          console.log("[Navbar] Menu close timeout executing");
+          refs.mobileMenu?.classList.add("pointer-events-none");
+          refs.body.style.overflow = "";
+          menuState = "closed";
+        }, 200);
+      }
+
+      // Event handler functions
+      function handleMenuToggle(): void {
+        console.log("[Navbar] Menu toggle clicked");
+        openMenu();
+      }
+
+      function handleCloseMenu(): void {
+        console.log("[Navbar] Close menu clicked");
         closeMenu();
       }
-    });
-  }
 
-  document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      !mobileMenu?.classList.contains("pointer-events-none")
-    ) {
-      closeMenu();
+      function handleMenuClick(e: MouseEvent): void {
+        console.log(
+          "[Navbar] Menu backdrop clicked",
+          e.target === refs.mobileMenu,
+        );
+        if (e.target === refs.mobileMenu) {
+          closeMenu();
+        }
+      }
+
+      function handleKeyDown(e: KeyboardEvent): void {
+        console.log("[Navbar] Key pressed:", e.key);
+        if (
+          e.key === "Escape" &&
+          !refs.mobileMenu?.classList.contains("pointer-events-none")
+        ) {
+          closeMenu();
+        }
+      }
+
+      // Add event listeners
+      if (refs.menuToggle) {
+        console.log("[Navbar] Adding menu toggle listener");
+        refs.menuToggle.addEventListener("click", handleMenuToggle);
+      }
+
+      if (refs.closeMenuBtn) {
+        console.log("[Navbar] Adding close menu listener");
+        refs.closeMenuBtn.addEventListener("click", handleCloseMenu);
+      }
+
+      if (refs.mobileMenu) {
+        console.log("[Navbar] Adding menu backdrop listener");
+        refs.mobileMenu.addEventListener("click", handleMenuClick);
+      }
+
+      console.log("[Navbar] Adding keydown listener");
+      document.addEventListener("keydown", handleKeyDown);
+
+      // Cleanup function
+      function cleanup() {
+        console.log("[Navbar] Cleanup function called");
+        if (refs.menuToggle) {
+          refs.menuToggle.removeEventListener("click", handleMenuToggle);
+        }
+        if (refs.closeMenuBtn) {
+          refs.closeMenuBtn.removeEventListener("click", handleCloseMenu);
+        }
+        if (refs.mobileMenu) {
+          refs.mobileMenu.removeEventListener("click", handleMenuClick);
+        }
+        document.removeEventListener("keydown", handleKeyDown);
+
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+      }
+
+      // Clean up when the component is unmounted
+      document.addEventListener("astro:before-swap", () => {
+        console.log("[Navbar] Component unmounting, running cleanup");
+        cleanup();
+      });
+    } catch (error: unknown) {
+      console.error("[Navbar] Error during initialization:", error);
+      if (error instanceof Error) {
+        console.error("[Navbar] Error stack:", error.stack);
+      }
     }
+  });
+
+  // Track window load
+  window.addEventListener("load", () => {
+    console.log("[Navbar] Window load event fired");
+  });
+
+  // Error tracking
+  window.addEventListener("error", (event: ErrorEvent) => {
+    console.error(
+      "[Navbar] Global error:",
+      event.error instanceof Error
+        ? event.error
+        : new Error(String(event.error)),
+    );
   });
 </script>

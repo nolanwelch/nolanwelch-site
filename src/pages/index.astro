@@ -4,42 +4,41 @@ import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <BaseLayout>
-  <Fragment slot="head">
-    <title>Nolan Welch</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </Fragment>
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 py-20">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 py-8 sm:py-20"
+    >
       <!-- Left Column -->
       <aside class="lg:sticky lg:top-8 lg:h-fit">
-        <header class="mb-16 lg:pr-8">
+        <header class="mb-8 sm:mb-16 lg:pr-8">
           <h1
-            class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-indigo-600 to-pink-600 text-transparent bg-clip-text animate-fade-in"
+            class="text-[2.75rem] sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 sm:mb-6 bg-gradient-to-r from-indigo-600 to-pink-600 text-transparent bg-clip-text leading-[1.1] will-change-transform"
+            style="opacity: 0; animation: fadeIn 0.5s ease-out forwards;"
           >
             Hey there, I&rsquo;m Nolan.
           </h1>
           <p
-            class="text-xl sm:text-2xl leading-relaxed mb-4 text-gray-700 dark:text-gray-300"
+            class="text-2xl sm:text-xl lg:text-2xl leading-tight mb-4 text-gray-700 dark:text-gray-300"
           >
             I build systems that help people make sense of things &mdash; or
             help machines make sense of people.
           </p>
-          <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          <p
+            class="text-xl sm:text-lg leading-relaxed text-gray-600 dark:text-gray-400"
+          >
             From scalable backend infrastructure to language-aware tooling, my
             work lives at the edge of logic, language, and learning.
           </p>
         </header>
 
-        <section class="mb-16 lg:pr-8">
+        <section class="mb-8 sm:mb-16 lg:pr-8">
           <h2
-            class="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+            class="text-[1.75rem] sm:text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
           >
             A Bit About Me
           </h2>
           <p
-            class="text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300"
+            class="text-xl sm:text-lg leading-relaxed mb-8 text-gray-700 dark:text-gray-300"
           >
             I&rsquo;m a software engineer and linguist with a deep interest in
             the systems that shape how we think, learn, and communicate. I care
@@ -48,7 +47,7 @@ import ProjectCard from "../components/ProjectCard.astro";
           </p>
           <a
             href="/about"
-            class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200"
+            class="inline-flex items-center px-6 py-3 sm:px-4 sm:py-2 border border-transparent rounded-md shadow-sm text-lg sm:text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200"
           >
             More about me
             <svg
@@ -67,23 +66,25 @@ import ProjectCard from "../components/ProjectCard.astro";
 
         <section class="lg:pr-8">
           <h2
-            class="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+            class="text-[1.75rem] sm:text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
           >
             Let&rsquo;s Connect
           </h2>
-          <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
+          <p
+            class="text-xl sm:text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300"
+          >
             Whether you&rsquo;re building thoughtful software, exploring
             language and cognition, or just want to chat about responsible AI
             &mdash; I&rsquo;m always open to conversation.
           </p>
-          <div class="flex gap-4">
+          <div class="flex gap-6 sm:gap-4">
             <a
               href="mailto:nolanwelch@outlook.com"
-              class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
+              class="flex items-center justify-center w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-gray-100 dark:bg-gray-800 transition-colors duration-200 will-change-transform"
               aria-label="Email"
             >
               <svg
-                class="w-5 h-5 text-gray-700 dark:text-gray-300"
+                class="w-6 h-6 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -97,11 +98,11 @@ import ProjectCard from "../components/ProjectCard.astro";
             </a>
             <a
               href="https://linkedin.com/in/nolan-welch"
-              class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
+              class="flex items-center justify-center w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <svg
-                class="w-5 h-5 text-gray-700 dark:text-gray-300"
+                class="w-6 h-6 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -112,11 +113,11 @@ import ProjectCard from "../components/ProjectCard.astro";
             </a>
             <a
               href="https://github.com/nolanwelch"
-              class="flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
+              class="flex items-center justify-center w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="GitHub"
             >
               <svg
-                class="w-5 h-5 text-gray-700 dark:text-gray-300"
+                class="w-6 h-6 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -130,13 +131,13 @@ import ProjectCard from "../components/ProjectCard.astro";
       </aside>
 
       <!-- Right Column -->
-      <main class="space-y-12">
+      <main class="space-y-8 sm:space-y-12">
         <h2
-          class="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-100"
+          class="text-[1.75rem] sm:text-2xl font-semibold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100"
         >
           Featured Work
         </h2>
-        <div class="grid gap-12">
+        <div class="grid gap-10 sm:gap-12">
           <ProjectCard
             title="Swimmingly"
             description="A gamified learning platform that teaches real-world debugging and software reasoning through fictional workplace challenges. Built on a thoughtful system design with a Vite-powered React frontend and a FastAPI backend, integrating a Git-based learning model to emphasize clarity, mentorship, and progressive complexity."
